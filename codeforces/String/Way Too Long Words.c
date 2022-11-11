@@ -7,11 +7,11 @@ int main()
     for(i = 0; i<n; i++)
     {
         char ch[100];
-        fgets(ch,sizeof(ch),stdin);
-        int l = strlen(ch) - 1;
+        scanf("%s",&ch);
+        int l = strlen(ch);
         if(l>10)
         {
-            printf("%c%d%c",ch[0],l - 2,ch[l - 1]);
+            printf("%c%d%c\n",ch[0],l - 2,ch[l - 1]);
         }
         else
         {
