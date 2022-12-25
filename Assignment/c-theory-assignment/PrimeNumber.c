@@ -1,22 +1,33 @@
 #include<stdio.h>
 int main()
 {
-    int n,i,temp = 0;
-    scanf("%d",&n);
-    if(n == 0 || n == 1){
-        temp = 1;
+    int t,i;
+    scanf("%d",&t);
+    int arr[t];
+    for(i = 0; i<t; i++)
+    {
+        scanf("%d",&arr[i]);
     }
-    for(i = 2; i<n; i++){
-        if(n%i==0){
-            temp = 1;
-            break;
+    int temp = 0;
+    for(int j = 0; j<t; j++)
+    {
+
+        for(i = 2; i<=t; i++)
+        {
+            if(arr[j]%i==0)
+            {
+                temp = 1;
+                break;
+            }
         }
-    }
-    if(temp == 0){
-        printf("Prime\n");
-    }
-    else{
-        printf("Composite\n");
+        if(temp == 0)
+        {
+            printf("Yes\n");
+        }
+        else
+        {
+            printf("No\n");
+        }
     }
 
 }

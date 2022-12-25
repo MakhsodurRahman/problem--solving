@@ -22,7 +22,7 @@ int main()
         arr[input[i]] += 1;
     }
     int count = 0;
-    for(i = 0; i<=largest; i++){
+    for(i = 1; i<=largest; i++){
 
         if(arr[i] == 1){
             count++;

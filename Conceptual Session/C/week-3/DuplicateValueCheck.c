@@ -3,7 +3,7 @@ int main()
 {
     int n,i,j,p;
     scanf("%d",&n);
-    int input[n];
+    int input[100];
     for(i = 0; i<n; i++){
         scanf("%d",&input[i]);
     }
@@ -15,10 +15,10 @@ int main()
     }
 
     int arr[largest + 1];
-    for(i = 0; i<=largest; i++){
+    for(i = 0; i<largest; i++){
         arr[i] = 0;
     }
-    for(i = 0; i<=n; i++){
+    for(i = 0; i<largest; i++){
         arr[input[i]] += 1;
     }
     int duplicate = 0;
@@ -27,14 +27,14 @@ int main()
 
         if(arr[i] > 1){
                 printf("duplicate value is : %d\n",i);
-            duplicate++;
+            //duplicate++;
         }
         else if(arr[i] == 1){
-            printf("unique value : ",i);
-            unique++;
+            printf("unique value : %d\n",i);
+            //unique++;
         }
     }
 
-    printf("total duplicate is %d \n total unique is : %d",duplicate,unique);
+    //printf("total duplicate is %d \n total unique is : %d",duplicate,unique);
 
 }

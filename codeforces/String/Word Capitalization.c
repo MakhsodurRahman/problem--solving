@@ -1,9 +1,43 @@
-#include<stdio.h>
-#include<string.h>
-#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+
 int main()
 {
-    char c[1000];
-    scanf("%s",c);
-    printf("%c%s\n", toupper(c[0]), c + 1);
+    char string1[20];
+    int i, length,n,j;
+    scanf("%d",&n);
+    for(j = 0; j<n; j++)
+    {
+        int flag = 0;
+        scanf("%s", string1);
+        length = strlen(string1);
+
+        for(i=0; i < length ; i++)
+        {
+            if(string1[i] != string1[length-i-1])
+            {
+                flag = 1;
+                break;
+            }
+        }
+
+        if (flag)
+        {
+            printf("Not Palindrome\n");
+        }
+        else
+        {
+            if(length>7)
+            {
+                printf("%c%d%c\n",string1[0],length - 2,string1[length - 1]);
+            }
+            else{
+                printf("%s\n",string1);
+            }
+        }
+    }
+
+    return 0;
 }
+
+

@@ -1,36 +1,47 @@
 #include<stdio.h>
 int main()
 {
-    int n,i,j,p;
-    scanf("%d %d",&n,&p);
+    int n,i;
+    scanf("%d",&n);
     int input[n];
-    for(i = 0; i<n; i++){
+    for(i=0; i<n; i+=1)
+    {
         scanf("%d",&input[i]);
     }
-    int largest = input[0];
-    for(j = 1; j<n; j++){
-        if(input[j]>largest){
-            largest = input[j];
+    int largestElement=input[0];
+
+    for(i=1; i<n; i+=1)
+    {
+        if(input[i]>largestElement)
+        {
+            largestElement=input[i];
         }
     }
 
-    int arr[largest + 1];
-    for(i = 0; i<=largest; i++){
-        arr[i] = 0;
-    }
-    for(i = 0; i<=n; i++){
-        arr[input[i]] += 1;
-    }
-    int count = 0;
-    for(i = largest; i>=1; i--){
+    int arr[largestElement+1];
 
-        if(arr[i] == 1){
-            count++;
+    for(i=0; i<=largestElement; i+=1)
+    {
+        arr[i]=0;
+    }
+
+    for(i=0; i<n; i+=1)
+    {
+        arr[input[i]]+=1;
+    }
+
+    int cnt=0;
+    for(i=largestElement; i>=1; i-=1)
+    {
+        if(arr[i]==1)
+        {
+            cnt++;
         }
-        if(count == p){
-            printf("3rd value is : %d",i);
+        if(cnt==3)
+        {
+            printf("3rd largest element is %d\n",i);
             break;
         }
     }
-
+    return 0;
 }
