@@ -17,11 +17,11 @@ target/
 
 *.class
 *.exe
+*.o
 
 ### IntelliJ IDEA ###
 .idea
 .exe
-.o
 *.iws
 *.iml
 *.ipr
