@@ -93,7 +93,7 @@ public:
            // arr[i-1] = arr[i];
            swap(arr[i-1],arr[i]);
         }
-        //sz--;
+        sz--;
     }
 };
 
