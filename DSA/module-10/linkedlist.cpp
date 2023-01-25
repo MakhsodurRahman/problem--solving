@@ -103,15 +103,30 @@ public:
         int cur_index = 0;
         while(cur_index != index -1){
 
+            //find index -ith possition
             a = a->nxt;
             cur_index++;
             cout<<"helo"<<"\n";
+
         }
 
         node *newNode = createNewNode(value);
-        newNode->nxt = a->nxt;
-        a->nxt = newNode;
+        newNode->nxt = a->nxt;//a->nxt jekhne point kore ache seta ekhon newNode->next point korbe
+        a->nxt = newNode;//newNode a->nxt ke point korbe
     }
+
+    void DeleteAtHead(){
+
+        if(head == NULL){
+            return;
+        }
+        sz--;
+        node *a = head;
+        head = a->nxt;
+        delete a;
+    }
+
+
 };
 
 int main()
@@ -127,7 +142,10 @@ int main()
     cout<<"\n"<< "  "<<l.searchSistinceValue(40)<<"\n";
     l.searchAllValue(3);
 
-    cout<<"\n"<<"size of linkedlist "<<l.getSize();
+    cout<<"\n"<<"size of linkedlist "<<l.getSize()<<"\n";
+    l.DeleteAtHead();
+    l.traverse();
+    cout<<"\n"<<"size of linkedlist "<<l.getSize()<<"\n";
 
 
 }
