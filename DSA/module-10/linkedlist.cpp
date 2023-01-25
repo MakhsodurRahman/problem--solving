@@ -11,10 +11,11 @@ public:
 class LinkedList{
 public:
     node * head;
-
+    int sz;
     LinkedList()
     {
         head = NULL;
+        sz = 0;
     }
 
     node* createNewNode(int value)
@@ -27,6 +28,7 @@ public:
 
     void insertIntoHead(int value)
     {
+        sz++;
         node *a = createNewNode(value);
         if(head == NULL){
             head = a;
@@ -74,6 +76,42 @@ public:
         }
 
     }
+    int getSize(){
+    /*
+        this code work on o(n)
+        node *a = head;
+        int index = 0;
+        while(a != NULL){
+            index++;
+            a =  a->nxt;
+        }
+        */
+        return sz;
+    }
+
+    void InsertAtAnyIndex(int index,int value){
+
+        if(index < 0 || index > sz){
+            return;
+        }
+        if(index == 0){
+            insertIntoHead(value);
+            return;
+        }
+        sz++;
+        node *a = head;
+        int cur_index = 0;
+        while(cur_index != index -1){
+
+            a = a->nxt;
+            cur_index++;
+            cout<<"helo"<<"\n";
+        }
+
+        node *newNode = createNewNode(value);
+        newNode->nxt = a->nxt;
+        a->nxt = newNode;
+    }
 };
 
 int main()
@@ -84,10 +122,12 @@ int main()
     l.insertIntoHead(4);
     l.insertIntoHead(38);
 
-
+    l.InsertAtAnyIndex(2,34545);
     l.traverse();
-    cout<<"\n"<< "  "<<l.searchSistinceValue(40);
+    cout<<"\n"<< "  "<<l.searchSistinceValue(40)<<"\n";
     l.searchAllValue(3);
+
+    cout<<"\n"<<"size of linkedlist "<<l.getSize();
 
 
 }
