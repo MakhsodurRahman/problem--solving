@@ -1,43 +1,45 @@
 #include<bits/stdc++.h>
 using namespace std;
+template<class T>
 class Node{
 public:
-    int data;
+    T data;
     Node* next;
     Node* prev;
-    Node(int value){
+    Node(T value){
         data = value;
         next = NULL;
         prev = NULL;
     }
 };
+template<class T>
 class Stack{
-    Node* head;
-    Node* top;
+    Node<T>* head;
+    Node<T>* top;
     int sz = 0;
 public:
     Stack(){
         head = NULL;
         top = NULL;
     }
-    void PUSH(int value){
+    void PUSH(T value){
         sz++;
-        Node* newNode = new Node(value);
+        Node<T> *newNode = new Node<T>(value);
         if(head == NULL){
-            head = top = newNode;
+            head = top = newNode;//head = top; head = newNode;
             return;
         }
         top->next = newNode;
         newNode->prev = top;
         top = newNode;
     }
-    int TOP(){
+    T TOP(){
         return top->data;
     }
     void POP(){
-        Node* delNode = top;
+        Node<T>* delNode = top;
         if(head == top){
-            head = top = NULL;
+            head = top = NULL;//head = null, top = null
         }
         else{
             top = delNode->prev;
@@ -54,31 +56,49 @@ public:
         return 0;
     }
     void GetAll(){
-        Node *allValue = head;
+        Node<T> *allValue = head;
         while (allValue != NULL){
             cout<<allValue->data<<"  ";
             allValue = allValue->next;
         }
-        
+
+    }
+    int stackSize(){
+        return sz;
     }
 };
 int main()
 {
-    Stack st;
-    st.PUSH(10);
-    st.PUSH(44);
-    st.PUSH(100);
-    st.GetAll();
-    cout<<"\n";
-    //cout<<st.TOP()<<"\n";
-    //st.POP();
-    //cout<<st.TOP();
-    //cout<<st.isEmpty();
-    while (st.isEmpty() != 1)
-    {
-       cout<<st.TOP()<<"   ";
-       st.POP();
+    Stack<char> st;
+    st.PUSH('a');
+    st.PUSH('b');
+    st.PUSH('c');
+    // st.GetAll();
+    // cout<<"\n";
+    // //cout<<st.TOP()<<"\n";
+    // //st.POP();
+    // //cout<<st.TOP();
+    // //cout<<st.isEmpty();
+
+    // cout<<st.TOP();
+    while(st.stackSize()>0){
+        cout<<st.TOP()<<" ";
+        st.POP();
     }
-    
+    Stack<char> temp;
+    while(st.stackSize()>0){
+        temp.PUSH(st.TOP());
+        st.POP();
+    }
+    swap(st,temp);
+    while (st.stackSize()>0){
+        cout<<st.TOP()<<" ";
+        st.POP();
+    }
+    cout<<st.TOP();
+
+
+
+
 
 }
