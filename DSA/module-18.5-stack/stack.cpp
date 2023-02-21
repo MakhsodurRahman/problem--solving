@@ -14,6 +14,7 @@ public:
 };
 template<class T>
 class Stack{
+public:
     Node<T>* head;
     Node<T>* top;
     int sz = 0;
@@ -69,10 +70,10 @@ public:
 };
 int main()
 {
-    Stack<char> st;
-    st.PUSH('a');
-    st.PUSH('b');
-    st.PUSH('c');
+    Stack<int> st;
+    st.PUSH(3);
+    st.PUSH(5);
+    st.PUSH(2);
     // st.GetAll();
     // cout<<"\n";
     // //cout<<st.TOP()<<"\n";
@@ -81,21 +82,40 @@ int main()
     // //cout<<st.isEmpty();
 
     // cout<<st.TOP();
-    while(st.stackSize()>0){
-        cout<<st.TOP()<<" ";
+    //================ stack reverse ==========
+    // while(st.stackSize()>0){
+    //     cout<<st.TOP()<<" ";
+    //     st.POP();
+    // }
+    // Stack<char> temp;
+    // while(st.stackSize()>0){
+    //     temp.PUSH(st.TOP());
+    //     st.POP();
+    // }
+    // swap(st,temp);
+    // while (st.stackSize()>0){
+    //     cout<<st.TOP()<<" ";
+    //     st.POP();
+    // }
+    // cout<<st.TOP();
+    Stack<int> temp;
+    while(st.stackSize() > 0){
+        int t = st.TOP();
         st.POP();
-    }
-    Stack<char> temp;
-    while(st.stackSize()>0){
-        temp.PUSH(st.TOP());
-        st.POP();
+        while(temp.stackSize()>0){
+            if(temp.TOP() < t){
+                break;
+            }
+            st.PUSH(temp.TOP());
+            temp.POP();
+        }
+        temp.PUSH(t);
     }
     swap(st,temp);
     while (st.stackSize()>0){
-        cout<<st.TOP()<<" ";
-        st.POP();
+     cout<<st.TOP()<<" ";
+     st.POP();
     }
-    cout<<st.TOP();
 
 
 
