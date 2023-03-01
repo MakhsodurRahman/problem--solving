@@ -111,6 +111,26 @@ public:
         sz--;
     }
 
+    void Reverse()
+    {
+        if(head == NULL){
+            return;
+        }
+        Node *a = head;
+        int cur_index = 0;
+        while(cur_index != sz - 1){
+            a = a->nxt;
+            cur_index++;
+        }
+
+        Node *b = head;
+        while(b != NULL){
+            swap(b->nxt,b->prv);
+            b = b->prv;
+        }
+        head = a;
+    }
+
 
 };
 int main()
@@ -120,10 +140,11 @@ int main()
     dl.InsertIntoHead(20);
     dl.InsertIntoHead(30);
     dl.InsertIntoHead(40);
-   // dl.InsertAtAnyIndex(2,80);
+   //dl.InsertAtAnyIndex(2,80);
     dl.Traverse();
     //cout<<dl.getSize();
-    dl.DeleteIndex(2);
+    //dl.DeleteIndex(2);
+    dl.Reverse();
     dl.Traverse();
 
 }
